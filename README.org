@@ -1,0 +1,69 @@
+#+TITLE: Custom Hotkey settings for Japanese IME on Windows
+#+AUTHOR: Masanao Igarashi
+#+EMAIL: syoux2@gmail.com
+#+DATE: 2019/10/17
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  ja
+#+OPTIONS: H:4 num:nil toc:nil ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: tex:t todo:t pri:nil tags:t texht:nil
+#+OPTIONS: author:t creator:nil email:nil date:t
+
+* IMEのON/OFFのホットキー設定（Windows）
+
+IMEのON/OFFのホットキー設定をカスタマイズするツールです。
+
+** IMEのON/OFF制御が動作する条件
+
+本ツールをセットアップすると、以下の条件でIMEのON/OFF制御が行われるようになります。
+
+- 右Shiftキーを単体でdown/upすると、IMEをON
+- 左Shiftキーを単体でdown/upすると、IMEをOFF
+- Shiftキーを単体でdownしてから0.4秒経過した場合は、長押しとみなしIMEの制御をしない
+- Ctrl+BackslashでIMEのON/OFFをトグル
+
+Shiftキーの長押し判定0.4秒を調整したい場合は、 =ShiftCtlBsIme.ahk= 内の =0.4= の箇所を直接修正してください。2箇所あります。
+
+** セットアップ方法
+
+*** AutoHotkeyのインストール
+
+先にAutoHotkeyを以下からダウンロードしてインストールしてください。
+
+[[https://github.com/Lexikos/AutoHotkey_L/releases]]
+
+*** ShiftCtlBsImeのセットアップ
+
+次に、このリポジトリをcloneして、 =setup.bat= を実行します。エクスプローラーから =setup.bat= をダブルクリックして実行できます。 =setup.bat= は以下の処理を行います。 
+
+1. Ahk2Exeを使用して、ShiftCtlBsIme.exeを生成
+2. ShiftCtlBsIme.exeが自動起動されるようにスタートアップに追加
+3. ShiftCtlBsIme.exeを起動
+
+*** Shift 5回入力時の固定キー機能を無効にする(Windows10の設定)
+
+Shiftキーを連打すると、Windows10が「固定キー機能を有効にしますか?」とダイアログを出してきます。「コンピューターの簡単操作センター」に移動して、「Shiftキーを5回押すと固定キー機能を有効にします」のチェックボックスを外してください。
+
+** アンインストール
+
+アンインストールする場合は、以下の手順で行います。
+
+1. 「ファイル名をしてして実行」から =shell:startup= と入力し、ショートカットを削除
+2. cloneしたフォルダを削除
+
+** 設定動機
+
+*** Altキーではなく、Shiftキーに設定している理由
+
+- 好んで利用しているUS配列、仕方なく利用する日本語配列、実装面積が小さいキーボード、すべてにおいて省略されにくいキー
+- ホームポジションから近い
+- Altキー単体押しのデフォルトのホットキー設定を潰したくない
+
+*** Ctrl+Backslashでトグルするように設定している理由
+
+- デフォルトでは、emacsのtoggle-input-methodは、Ctrl+Backslashに割り当てられています。それに合わせるためです。
+
+** ライセンス
+
+- IME.ahkはこちらのものを利用しています [[https://w.atwiki.jp/eamat/pages/17.html]] 。「改変・再配布ともにご自由にどうぞ」という記載があります。
+- IME.ahk以外のCopyrightはMasanao Igarashiで、ライセンスはMITです。
