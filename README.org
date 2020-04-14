@@ -1,7 +1,7 @@
 #+TITLE: Custom Hotkey settings for Japanese IME on Windows
 #+AUTHOR: Masanao Igarashi
 #+EMAIL: syoux2@gmail.com
-#+DATE: 2019/10/17
+#+DATE: 2020/04/14
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  ja
@@ -19,9 +19,9 @@ IMEのON/OFFのホットキー設定をカスタマイズするツールです�
 
 - 右Shiftキーを単体でdown/upすると、IMEをON
 - 左Shiftキーを単体でdown/upすると、IMEをOFF
-- Shiftキーを単体でdownしてから0.4秒経過した場合は、長押しとみなしIMEの制御をしない
+- Shiftキーを単体でdownしてから0.2秒経過した場合は、長押しとみなしIMEの制御をしない
 
-Shiftキーの長押し判定0.4秒を調整したい場合は、 =ShiftIme.ahk= 内の =0.4= の箇所を直接修正してください。2箇所あります。
+Shiftキーの長押し判定0.2秒を調整したい場合は、 =ShiftIme.ahk= 内の =0.2= の箇所を直接修正してください。2箇所あります。
 
 ** セットアップ方法
 

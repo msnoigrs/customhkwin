@@ -98,7 +98,7 @@
 *~PgDn::
     Return
 
-; 0.4秒以上長押ししたらIME制御を発動しない
+; 0.2秒以上長押ししたらIME制御を発動しない
 ; Shiftキー単体のdown/upにしか反応しない
 global Lflag := 0
 
@@ -108,7 +108,7 @@ global Lflag := 0
         ; LShift 単体押し下げ初回時
         global Lflag
         Lflag := 0
-        KeyWait, LShift, T0.4
+        KeyWait, LShift, T0.2
         If (ErrorLevel)
         {
             global Lflag
@@ -138,7 +138,7 @@ global Rflag := 0
         ; RShift 単体押し下げ初回時
         global Rflag
         Rflag := 0
-        KeyWait, RShift, T0.4
+        KeyWait, RShift, T0.2
         If (ErrorLevel)
         {
             global Rflag
