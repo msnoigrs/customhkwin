@@ -1,6 +1,6 @@
-#include IME.ahk
+#include IMEv2.ahk
 
-#MaxHotkeysPerInterval 350
+A_MaxHotkeysPerInterval := 350
 
 ; 主要なキーを HotKey に設定し、何もせずパススルーする
 *~a::
@@ -96,79 +96,89 @@
 *~End::
 *~PgUp::
 *~PgDn::
-    Return
+{
+    return
+}
 
 ^\::
-getIMEMode := IME_Get()
-if (%getIMEMode% = 0)
 {
-    IME_SET(1)
-    Return
-}
-else
-{
-    IME_SET(0)
-    Return
+    getIMEMode := IME_Get()
+    if (getIMEMode = 0)
+    {
+        IME_SET(1)
+        return
+    }
+    else
+    {
+        IME_SET(0)
+        return
+    }
 }
 
-; 0.4秒以上長押ししたらIME制御を発動しない
+; 0.2秒以上長押ししたらIME制御を発動しない
 ; Shiftキー単体のdown/upにしか反応しない
 global Lflag := 0
 
 ~LShift::
+{
     If (A_PriorHotkey != "~LShift")
     {
         ; LShift 単体押し下げ初回時
         global Lflag
         Lflag := 0
-        KeyWait, LShift, T0.4
-        If (ErrorLevel)
+        if !KeyWait("LShift", "T0.2")
         {
             global Lflag
             Lflag := 1
         }
     }
-    Return
+    return
+}
 
 ; 左 Shift 空打ちで IME を OFF
 LShift up::
+{
     If (A_PriorHotkey == "~LShift")
     {
         global Lflag
         if Lflag = 1
         {
-            Return
+            return
         }
         IME_SET(0)
     }
-    Return 
+    return
+}
 
 global Rflag := 0
 
 ~RShift::
+{
     If (A_PriorHotkey != "~RShift")
     {
         ; RShift 単体押し下げ初回時
         global Rflag
         Rflag := 0
-        KeyWait, RShift, T0.4
-        If (ErrorLevel)
+        if !KeyWait("RShift", "T0.2")
         {
             global Rflag
             Rflag := 1
         }
     }
-    Return
+    return
+}
 
-; 右 Shift 空打ちで IME を OFF
+; 右 Shift 空打ちで IME を ON
 RShift up::
+{
     If (A_PriorHotkey == "~RShift")
     {
         global Rflag
         if Rflag = 1
         {
-            Return
+            return
         }
         IME_SET(1)
     }
-    Return 
+    return 
+}

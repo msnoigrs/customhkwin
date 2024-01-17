@@ -1,7 +1,7 @@
 #+TITLE: Custom Hotkey settings for Japanese IME on Windows
 #+AUTHOR: Masanao Igarashi
 #+EMAIL: syoux2@gmail.com
-#+DATE: 2020/04/14
+#+DATE: 2024/01/17
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  ja
@@ -33,7 +33,8 @@ Shiftキーの長押し判定0.2秒を調整したい場合は、 =ShiftIme.ahk=
 
 *** ShiftImeのセットアップ
 
-次に、このリポジトリをcloneして、 =setup.bat= を実行します。エクスプローラーから =setup.bat= をダブルクリックして実行できます。 =setup.bat= は以下の処理を行います。 
+次に、このリポジトリをcloneします。さらに https://github.com/k-ayaki/IMEv2.ahk からIMEv2.ahkを取得し、同じディレクトリに置きます。
+=setup.bat= を実行します。エクスプローラーから =setup.bat= をダブルクリックして実行できます。 =setup.bat= は以下の処理を行います。 
 
 1. Ahk2Exeを使用して、ShiftIme.exeを生成
 2. ShiftIme.exeが自動起動されるようにスタートアップに追加
@@ -60,5 +61,5 @@ Shiftキーを連打すると、Windows10が「固定キー機能を有効にし
 
 ** ライセンス
 
-- IME.ahkはこちらのものを利用しています [[https://w.atwiki.jp/eamat/pages/17.html]] 。「改変・再配布ともにご自由にどうぞ」という記載があります。
-- IME.ahk以外のCopyrightはMasanao Igarashiで、ライセンスはMITです。
+- IME.ahk [[https://w.atwiki.jp/eamat/pages/17.html]] 。「改変・再配布ともにご自由にどうぞ」という記載があります。
+- @kenichiro_ayaki(綾木 健一郎)氏によるIME.ahkのv2移植版IMEv2.ahk https://github.com/k-ayaki/IMEv2.ahk https://benizara.hatenablog.com/entry/2023/07/17/194711
