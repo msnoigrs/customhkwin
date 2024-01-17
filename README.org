@@ -63,3 +63,4 @@ Shiftキーを連打すると、Windows10が「固定キー機能を有効にし
 
 - IME.ahk [[https://w.atwiki.jp/eamat/pages/17.html]] 。「改変・再配布ともにご自由にどうぞ」という記載があります。
 - @kenichiro_ayaki(綾木 健一郎)氏によるIME.ahkのv2移植版IMEv2.ahk https://github.com/k-ayaki/IMEv2.ahk https://benizara.hatenablog.com/entry/2023/07/17/194711
+- IMEv2.ahk以外のCopyrightはMasanao Igarashiで、ライセンスはMITです。
