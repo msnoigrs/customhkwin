@@ -103,7 +103,9 @@ A_MaxHotkeysPerInterval := 350
 ; 0.2秒以上長押ししたらIME制御を発動しない
 ; Shiftキー単体のdown/upにしか反応しない
 global Lflag := 0
+global Rflag := 0
 
+#HotIf !WinActive("ahk_class Emacs")
 ~LShift::
 {
     If (A_PriorHotkey != "~LShift")
@@ -135,8 +137,6 @@ LShift up::
     return
 }
 
-global Rflag := 0
-
 ~RShift::
 {
     if (A_PriorHotkey != "~RShift")
@@ -167,3 +167,70 @@ RShift up::
     }
     return
 }
+#HotIf
+
+#HotIf WinActive("ahk_class Emacs")
+~LShift::
+{
+    If (A_PriorHotkey != "~LShift")
+    {
+        ; LShift 単体押し下げ初回時
+        global Lflag
+        Lflag := 0
+        if !KeyWait("LShift", "T0.2")
+        {
+            global Lflag
+            Lflag := 1
+        }
+    }
+    return
+}
+
+; 左 Shift 空打ちで IME を OFF
+LShift up::
+{
+    if (A_PriorHotkey == "~LShift")
+    {
+        global Lflag
+        if Lflag = 1
+        {
+            return
+        }
+        ; muhenkan
+        Send "{vk1Dsc07B}"
+    }
+    return
+}
+
+~RShift::
+{
+    if (A_PriorHotkey != "~RShift")
+    {
+        ; RShift 単体押し下げ初回時
+        global Rflag
+        Rflag := 0
+        if !KeyWait("RShift", "T0.2")
+        {
+            global Rflag
+            Rflag := 1
+        }
+    }
+    return
+}
+
+; 右 Shift 空打ちで IME を ON
+RShift up::
+{
+    if (A_PriorHotkey == "~RShift")
+    {
+        global Rflag
+        if Rflag = 1
+        {
+            return
+        }
+        ; henkan
+        Send "{vk1Csc079}"
+    }
+    return
+}
+#HotIf
